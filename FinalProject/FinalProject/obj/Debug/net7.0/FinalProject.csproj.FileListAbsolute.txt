@@ -29,3 +29,4 @@ D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignmen
 D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.pdb
 D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.genruntimeconfig.cache
 D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\ref\FinalProject.dll
+D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\StbImageSharp.dll

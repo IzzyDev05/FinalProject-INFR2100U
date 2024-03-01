@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EqKR+EUJsy9C8dIBsFcuUdUmF00/rUtmUi4Aesrb/ZCpGcnfYB5XZRfWzC4iDd1huueQe/+cP25bHU3VgtZ6aw==",
+  "dgSpecHash": "et4owYRCY9/9w26IO8ZucUepfBCHc/3WMCvzu0L+PMLZGGFN2WnRsY7sa8hD/4m76Auqu/6eaQrVu2WSc7k24Q==",
   "success": true,
   "projectFilePath": "D:\\_OTU\\Year 2\\Winter Term\\Programming in C and C++ - INFR 2100U\\Final Assignment\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\FinalProject.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\kisho\\.nuget\\packages\\opentk.windowing.common\\4.8.2\\opentk.windowing.common.4.8.2.nupkg.sha512",
     "C:\\Users\\kisho\\.nuget\\packages\\opentk.windowing.desktop\\4.8.2\\opentk.windowing.desktop.4.8.2.nupkg.sha512",
     "C:\\Users\\kisho\\.nuget\\packages\\opentk.windowing.graphicslibraryframework\\4.8.2\\opentk.windowing.graphicslibraryframework.4.8.2.nupkg.sha512",
+    "C:\\Users\\kisho\\.nuget\\packages\\stbimagesharp\\2.27.13\\stbimagesharp.2.27.13.nupkg.sha512",
     "C:\\Users\\kisho\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
