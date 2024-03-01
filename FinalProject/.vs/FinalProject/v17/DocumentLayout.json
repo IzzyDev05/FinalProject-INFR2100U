@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|c:\\users\\blackice\\documents\\github\\finalproject-infr2100u\\finalproject\\finalproject\\gameplay\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\gameplay\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|c:\\users\\blackice\\documents\\github\\finalproject-infr2100u\\finalproject\\finalproject\\gameplay\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\gameplay\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|c:\\users\\blackice\\documents\\github\\finalproject-infr2100u\\finalproject\\finalproject\\gameplay\\map\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\gameplay\\map\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|c:\\users\\blackice\\documents\\github\\finalproject-infr2100u\\finalproject\\finalproject\\gameplay\\map\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\gameplay\\map\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|c:\\users\\blackice\\documents\\github\\finalproject-infr2100u\\finalproject\\finalproject\\gameplay\\map\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\gameplay\\map\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|c:\\users\\blackice\\documents\\github\\finalproject-infr2100u\\finalproject\\finalproject\\gameplay\\map\\continent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB2A6C2-F4B9-4456-A70B-D8AE104CE4AF}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\gameplay\\map\\continent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Card.cs",
+              "DocumentMoniker": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Card.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Gameplay\\Card.cs",
+              "ToolTip": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Card.cs",
+              "RelativeToolTip": "FinalProject\\Gameplay\\Card.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T06:18:19.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Player.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Gameplay\\Player.cs",
+              "ToolTip": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Player.cs",
+              "RelativeToolTip": "FinalProject\\Gameplay\\Player.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAQwGYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T05:38:43.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Continent.cs",
+              "DocumentMoniker": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Continent.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Gameplay\\Map\\Continent.cs",
+              "ToolTip": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Continent.cs",
+              "RelativeToolTip": "FinalProject\\Gameplay\\Map\\Continent.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA9wDcAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T05:36:01.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Country.cs",
+              "DocumentMoniker": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Country.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Gameplay\\Map\\Country.cs",
+              "ToolTip": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Country.cs",
+              "RelativeToolTip": "FinalProject\\Gameplay\\Map\\Country.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T05:35:05.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Graph.cs",
+              "DocumentMoniker": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Graph.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Gameplay\\Map\\Graph.cs",
+              "ToolTip": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Graph.cs",
+              "RelativeToolTip": "FinalProject\\Gameplay\\Map\\Graph.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADEAAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T05:34:25.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Map.cs",
+              "DocumentMoniker": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Map.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Gameplay\\Map\\Map.cs",
+              "ToolTip": "C:\\Users\\BlackIce\\Documents\\GitHub\\FinalProject-INFR2100U\\FinalProject\\FinalProject\\Gameplay\\Map\\Map.cs",
+              "RelativeToolTip": "FinalProject\\Gameplay\\Map\\Map.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T05:33:44.753Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

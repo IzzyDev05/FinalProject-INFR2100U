@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FinalProject
-build_property.ProjectDir = D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\
+build_property.ProjectDir = C:\Users\BlackIce\Documents\GitHub\FinalProject-INFR2100U\FinalProject\FinalProject\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
