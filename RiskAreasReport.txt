@@ -20,3 +20,15 @@ This class holds the amount of extra armies awarded per turn for complete owners
 The Graph of participating countries can be used to assign unique properties to whole continents, or be used during calculations for game mechanics that involve continents. 
 The function CheckIfSoleOwned returns true if the entire country is owned by one player, and returns false otherwise.
 The function GetFirstOwner returns the owner of the first country in the list of countries. This can be used after checking for sole ownership to determine who should be rewarded with the extra armies.
+
+==========
+
+Added by: Ishaan Kishore
+Added on: 2024-03-02
+Topic: Graphics V1
+
+For the graphics of the game, we're using OpenTK (A C# wrapped for OpenGL) as that's the framework we have the most experience in. As of this submission, when you begin the game, you should be greeted with the game window with the game map properly loaded. To achieve this, we made use of a basic vertex shader along with a fragment shader which handles alpha-based transparency.
+
+For the next graphical submission, we plan on adding player units which can be moved, along with some UI that shows required information. For the final submission, we will have a properly functioning main menu that will lead into the game, along with adding juice to the visuals to give the game a better overall feel.
+
+==========
