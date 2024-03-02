@@ -4,7 +4,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        using Game risk = new Game(1080, 720, "Risk - INFR2100U");
+        using Game risk = new Game(1200, 614, "Risk - INFR2100U");
         risk.Run();
     }
 }

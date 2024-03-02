@@ -30,3 +30,35 @@ D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignmen
 D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.genruntimeconfig.cache
 D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\ref\FinalProject.dll
 D:\_OTU\Year 2\Winter Term\Programming in C and C++ - INFR 2100U\Final Assignment\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\StbImageSharp.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\FinalProject.exe
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\FinalProject.deps.json
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\FinalProject.runtimeconfig.json
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\FinalProject.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\FinalProject.pdb
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Audio.OpenAL.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Compute.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Core.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Graphics.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Input.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Mathematics.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Windowing.Common.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Windowing.Desktop.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\OpenTK.Windowing.GraphicsLibraryFramework.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\StbImageSharp.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\runtimes\linux-x64\native\libglfw-wayland.so.3.3
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\runtimes\linux-x64\native\libglfw.so.3.3
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\runtimes\osx-arm64\native\libglfw.3.dylib
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\runtimes\osx-x64\native\libglfw.3.dylib
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\runtimes\win-x64\native\glfw3.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\bin\Debug\net7.0\runtimes\win-x86\native\glfw3.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.csproj.AssemblyReference.cache
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.AssemblyInfoInputs.cache
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.AssemblyInfo.cs
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.csproj.CoreCompileInputs.cache
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.csproj.CopyComplete
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\refint\FinalProject.dll
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.pdb
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\FinalProject.genruntimeconfig.cache
+C:\_MyFiles\Projects\FinalProject-INFR2100U\FinalProject\FinalProject\obj\Debug\net7.0\ref\FinalProject.dll

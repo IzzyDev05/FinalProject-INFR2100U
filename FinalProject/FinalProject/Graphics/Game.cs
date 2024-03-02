@@ -4,13 +4,12 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace INFR2100U.Graphics;
 
+namespace INFR2100U.Graphics;
 public class Game : GameWindow
 {
-    private Shader shader;
-    private Texture tex0;
-    private Texture tex1;
+    private Shader riskMapShader;
+    private Texture riskMapTex;
     
     private int vertexBufferObject;
     private int vertexArrayObject;
@@ -47,16 +46,14 @@ public class Game : GameWindow
         base.OnLoad();
         GL.ClearColor(0.302f, 0.302f, 0.302f, 1f);
         
-        shader = new Shader("default.vert", "default.frag");
+        riskMapShader = new Shader("default.vert", "riskMap.frag");
         
         // === TEXTURES === //
         GL.Enable(EnableCap.Blend);
         GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
         
-        tex0 = new Texture("Container.jpg");
-        tex0.Use(TextureUnit.Texture0);
-        tex1 = new Texture("Bender.png");
-        tex1.Use(TextureUnit.Texture1);
+        riskMapTex = new Texture("RiskGameMap.png");
+        riskMapTex.Use();
 
         // === INIT VBO === //
         vertexBufferObject = GL.GenBuffer();
@@ -73,25 +70,22 @@ public class Game : GameWindow
         GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(uint) * indices.Length, indices, BufferUsageHint.StaticDraw);
 
         // === SET ATTRIBUTES === //
-        int id = shader.GetAttribLocation("aPos");
+        int id = riskMapShader.GetAttribLocation("aPos");
         GL.VertexAttribPointer(id, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
         GL.EnableVertexAttribArray(id);
 
-        id = shader.GetAttribLocation("UVs");
+        id = riskMapShader.GetAttribLocation("UVs");
         GL.VertexAttribPointer(id, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
         GL.EnableVertexAttribArray(id);
 
-        shader.Use();
+        riskMapShader.Use();
         
         // === SET UNIFORMS === //
-        id = shader.GetUniformLocation("color");
+        id = riskMapShader.GetUniformLocation("color");
         GL.Uniform4(id, Color4.Aqua);
         
-        id = shader.GetUniformLocation("tex0");
+        id = riskMapShader.GetUniformLocation("tex0");
         GL.Uniform1(id, 0);
-        
-        id = shader.GetUniformLocation("tex1");
-        GL.Uniform1(id, 1);
     }
 
     protected override void OnUnload()
@@ -104,7 +98,7 @@ public class Game : GameWindow
         GL.DeleteBuffer(vertexArrayObject);
         GL.DeleteBuffer(elementBufferObject);
         
-        shader.Dispose();
+        riskMapShader.Dispose();
         
         base.OnUnload();
     }
@@ -114,11 +108,10 @@ public class Game : GameWindow
         base.OnRenderFrame(args);
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-        tex0.Use(TextureUnit.Texture0);
-        tex1.Use(TextureUnit.Texture1);
-        shader.Use();
+        riskMapTex.Use();
+        riskMapShader.Use();
         
-        int id = shader.GetUniformLocation("color");
+        int id = riskMapShader.GetUniformLocation("color");
         GL.Uniform4(id, Color4.Aqua);
         
         GL.BindVertexArray(vertexArrayObject);
