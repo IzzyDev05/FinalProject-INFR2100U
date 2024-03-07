@@ -11,6 +11,17 @@ public class Graph<T>
     }
 
     #region GRAPH_FUNCTIONS
+    
+    /// <summary>
+    /// Adds new item to Graph.
+    /// </summary>
+    /// <param name="node">The key which will be a node in the graph.</param>
+    /// <param name="adjacency">The value which will be a list of adjancent nodes.</param>
+    public void Add(T node, List<T> adjacency)
+    {
+        adjacencyList.Add(node, adjacency);
+    }
+
     /// <summary>
     /// Addes a Node as a Key to the Dictionary which a List of adjacent nodes can be assigned
     /// </summary>
@@ -46,8 +57,22 @@ public class Graph<T>
     /// </summary>
     public T FirstNode { get { return adjacencyList.First().Key; } }
 
-    public Dictionary<T, List<T>>.KeyCollection GetKey { get { return adjacencyList.Keys; } }
-    public Dictionary<T, List<T>>.ValueCollection GetValue { get { return adjacencyList.Values; } }
+
+    public T FindNode(T node)
+    {
+        foreach (var key in GetAllKeys)
+        {
+            if (key.Equals(node))
+            {
+                return key;
+            }
+        }
+
+        throw new Exception($"Graph does not contain {node}");
+    }
+
+    public Dictionary<T, List<T>>.KeyCollection GetAllKeys { get { return adjacencyList.Keys; } }
+    public Dictionary<T, List<T>>.ValueCollection GetAllValues { get { return adjacencyList.Values; } }
     #endregion
 
     #region HELPERS
@@ -88,7 +113,7 @@ public class Graph<T>
     // EXISTS ONLY TO CHECK OUT WHAT NEW FUNCTIONS NEEDS TO BE ADDED.
     private void Test()
     {
-
+        
     }
     #endregion
 }

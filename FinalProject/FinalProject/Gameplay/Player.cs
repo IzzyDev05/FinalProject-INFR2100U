@@ -75,7 +75,7 @@ public class Player
         }
 
         // Get bonus for owning a continent
-        foreach (Continent continent in Map.everyContinent)
+        foreach (Continent continent in Map.map)
         {
             if (continent.CheckIfSoleOwned(colour))
             {

@@ -8,9 +8,9 @@ public class Country
     public string name { get; private set; }
     public PlayerColour owner;
     public int population;
-    private Vector2 position;
+    public int position;
 
-    public Country(string newName, Vector2 newPos)
+    public Country(string newName, int newPos)
     {
         name = newName;
         owner = PlayerColour.None;
@@ -18,5 +18,13 @@ public class Country
         position = newPos;
     }
 
-    public Vector2 GetPosition() { return position; }
+    public Country(string newName, int newPos, PlayerColour player = PlayerColour.None, int army = 0) 
+    {
+        name = newName;
+        owner = player;
+        population = army;
+        position = newPos;
+    }
+
+    public int Population { get { return population; } set { population = value; } }
 }
