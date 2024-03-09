@@ -5,22 +5,21 @@ using INFR2100U.Player;
 
 public class Country
 {
-    public string name { get; private set; }
-    public PlayerColour owner;
+    public string countryName { get; private set; }
+    public Player owner;
     public int population;
     public int position;
 
     public Country(string newName, int newPos)
     {
-        name = newName;
-        owner = PlayerColour.None;
+        countryName = newName;
         population = 0;
         position = newPos;
     }
 
-    public Country(string newName, int newPos, PlayerColour player = PlayerColour.None, int army = 0) 
+    public Country(string newName, int newPos, Player player, int army = 0) 
     {
-        name = newName;
+        countryName = newName;
         owner = player;
         population = army;
         position = newPos;

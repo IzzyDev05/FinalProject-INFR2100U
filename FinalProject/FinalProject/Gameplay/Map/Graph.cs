@@ -1,4 +1,6 @@
 namespace INFR2100U.Graph;
+using INFR2100U.Country;
+using INFR2100U.Continent;
 
 public class Graph<T>
 {
@@ -10,8 +12,8 @@ public class Graph<T>
         adjacencyList = new Dictionary<T, List<T>>();
     }
 
+
     #region GRAPH_FUNCTIONS
-    
     /// <summary>
     /// Adds new item to Graph.
     /// </summary>
@@ -23,12 +25,24 @@ public class Graph<T>
     }
 
     /// <summary>
+    /// Removes item from Graph.
+    /// </summary>
+    /// <param name="node">Node to remove.</param>
+    public void Remove(T node)
+    {
+        adjacencyList.Remove(node);
+    }
+
+    /// <summary>
     /// Addes a Node as a Key to the Dictionary which a List of adjacent nodes can be assigned
     /// </summary>
     /// <param name="node">Node of type T that will be added to the Graph</param>
     public void AddNode(T node)
     {
-        adjacencyList[node] = new List<T>();
+        if (adjacencyList.ContainsKey(node) == false)
+        {
+            adjacencyList[node] = new List<T>();
+        } 
     }
 
     /// <summary>
@@ -38,8 +52,15 @@ public class Graph<T>
     /// <param name="endNode">The node that the edge or connection will end on.</param>
     public void AddEdge(T startNode, T endNode)
     {
-        adjacencyList[startNode].Add(endNode);
-        adjacencyList[endNode].Add(startNode);
+        if (adjacencyList.ContainsKey(startNode) == false)
+        {
+            adjacencyList[startNode].Add(endNode);
+        }
+        
+        if (adjacencyList.ContainsKey(endNode) == false) 
+        {
+            adjacencyList[endNode].Add(startNode);
+        }
     }
 
     /// <summary>
@@ -52,28 +73,8 @@ public class Graph<T>
         return adjacencyList[Node];
     }
 
-    /// <summary>
-    /// Returns the first node in the Graph
-    /// </summary>
-    public T FirstNode { get { return adjacencyList.First().Key; } }
-
-
-    public T FindNode(T node)
-    {
-        foreach (var key in GetAllKeys)
-        {
-            if (key.Equals(node))
-            {
-                return key;
-            }
-        }
-
-        throw new Exception($"Graph does not contain {node}");
-    }
-
-    public Dictionary<T, List<T>>.KeyCollection GetAllKeys { get { return adjacencyList.Keys; } }
-    public Dictionary<T, List<T>>.ValueCollection GetAllValues { get { return adjacencyList.Values; } }
     #endregion
+
 
     #region HELPERS
     /// <summary>
@@ -93,6 +94,7 @@ public class Graph<T>
     /// </summary>
     /// <param name="node"></param>
     /// <returns></returns>
+    /// <exception cref="KeyNotFoundException"></exception>
     public List<T> this[T node]
     {
         get
@@ -101,13 +103,74 @@ public class Graph<T>
             {
                 return adjacencyList[node];
             }
-            else
-            {
-                return new List<T>();
-            }
+
+            throw new KeyNotFoundException();
+
+        }
+
+        set
+        {
+            adjacencyList[node] = value;
         }
     }
+
+    /// <summary>
+    /// Get the value associated with the specified Key.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    /// <exception cref="KeyNotFoundException"></exception>
+    public List<T> this[string name] 
+    {
+        get
+        {
+            foreach (T node in adjacencyList.Keys)
+            {
+                if (node is Country country && country.countryName == name || node is Continent continent && continent.continentName == name)
+                {
+                    return adjacencyList[node];
+                }
+            }
+
+            throw new KeyNotFoundException();
+        }
+
+        set 
+        {
+            foreach (T node in adjacencyList.Keys)
+            {
+                if (node is Country country && country.countryName == name || node is Continent continent && continent.continentName == name)
+                {
+                    adjacencyList[node] = value;
+                }
+            }
+
+            throw new KeyNotFoundException();
+        }
+    }
+
+    /// <summary>
+    /// Returns the first node in the Graph
+    /// </summary>
+    public T FirstNode { get { return adjacencyList.First().Key; } }
+
+    public T FindNode(string name)
+    {
+        foreach(T node in adjacencyList.Keys)
+        {
+            if (node is Country country && country.countryName == name || node is Continent continent && continent.continentName == name)
+            {
+                return node;
+            }
+        }
+
+        throw new KeyNotFoundException();
+    }
+
+    public Dictionary<T, List<T>>.KeyCollection GetAllKeys { get { return adjacencyList.Keys; } }
+    public Dictionary<T, List<T>>.ValueCollection GetAllValues { get { return adjacencyList.Values; } }
     #endregion
+
 
     #region TEST_&_DELETE
     // EXISTS ONLY TO CHECK OUT WHAT NEW FUNCTIONS NEEDS TO BE ADDED.

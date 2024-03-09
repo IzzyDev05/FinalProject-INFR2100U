@@ -9,7 +9,7 @@ public class Continent
     public string continentName { get; private set; }
     public int controlValue { get; private set; }
     public Graph<Country> countries = new Graph<Country>();
-    public bool CheckIfSoleOwned(PlayerColour player)
+    public bool CheckIfSoleOwned(Player player)
     {
         foreach (Country country in countries)
         {
@@ -17,47 +17,13 @@ public class Continent
         }
         return true;
     }
-    public PlayerColour GetFirstOwner() { return countries.FirstNode.owner; }
+    public Player GetFirstOwner() { return countries.FirstNode.owner; }
 
-    public Continent(string name, Graph<Country> subGraph)
+    public Continent(string name, Graph<Country> subGraph, int control)
     {
         continentName = name;
         countries = subGraph;
-
-        switch (name)
-        {
-            case "N. America":
-                {
-                    controlValue = 5;
-                    break;
-                }
-            case "S. America":
-                {
-                    controlValue = 2;
-                    break;
-                }
-            case "Africa":
-                {
-                    controlValue = 3;
-                    break;
-                }
-            case "Asia":
-                {
-                    controlValue = 7;
-                    break;
-                }
-            case "Europe":
-                {
-                    controlValue = 5;
-                    break;
-                }
-            case "Australia":
-                {
-                    controlValue = 2;
-                    break;
-                }
-        }
-
+        controlValue = control;
     }
 }
 

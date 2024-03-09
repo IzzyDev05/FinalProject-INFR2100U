@@ -149,6 +149,10 @@ public static class Map
     }
     #endregion
 
+    #region Map_Generation
+    /// <summary>
+    /// Creates the subgraph for each continent.
+    /// </summary>
     public static void SetCountryGraph()
 	{
         // North America
@@ -170,69 +174,78 @@ public static class Map
         SetupAustralia();
 	}
 
+    /// <summary>
+    /// Creates the map graph
+    /// </summary>
 	public static void MakeMapGraph() 
 	{
         // Create Continents
-        Continent NorthAmerica = new Continent("North America", SetupNorthAmerica());
-        Continent SouthAmerica = new Continent("South America", SetupSouthAmerica());
-        Continent Europe = new Continent("Europe", SetupEurope());
-        Continent Africa = new Continent("Africa", SetupAfrica());
-        Continent Asia = new Continent("Asia", SetupAsia());
-        Continent Austrialia = new Continent("Australia", SetupAustralia());
+        Continent NorthAmerica = new Continent("North America", SetupNorthAmerica(), 5);
+        Continent SouthAmerica = new Continent("South America", SetupSouthAmerica(), 2);
+        Continent Europe = new Continent("Europe", SetupEurope(), 5);
+        Continent Africa = new Continent("Africa", SetupAfrica(), 3);
+        Continent Asia = new Continent("Asia", SetupAsia(), 7);
+        Continent Austrialia = new Continent("Australia", SetupAustralia(), 2);
 
         // Link Continents by Country adjacency
         #region NA_Link
-        NorthAmerica.countries[new Country("Greenland", 5)].Add(Europe.countries.FindNode(new Country("Iceland", 2))); // Link to Europe
-        NorthAmerica.countries[new Country("Central America", 3)].Add(SouthAmerica.countries.FindNode(new Country("Venezuela", 3))); // Link to South America
-        NorthAmerica.countries[new Country("Alaska", 1)].Add(Asia.countries.FindNode(new Country("Kamchatka", 6))); // Link to Asia
+        NorthAmerica.countries["Greenland"].Add(Europe.countries.FindNode("Iceland")); // Link to Greenland to Iceland (Europe)
+        NorthAmerica.countries["Central America"].Add(SouthAmerica.countries.FindNode("Venezuela")); // Link to Central America to Venezuela (South America)
+        NorthAmerica.countries["Alaska"].Add(Asia.countries.FindNode("Kamchatka")); // Link to Alaska to Kamchatka (Asia)
+        #endregion
+        
+        
+        #region SA_Link    
+        SouthAmerica.countries["Brazil"].Add(Africa.countries.FindNode("North Africa")); // Link to Brazil to North Africa (Africa)
+        SouthAmerica.countries["Venezuela"].Add(NorthAmerica.countries.FindNode("Central America")); // Link to Venezuela to Central America (North America)
         #endregion
 
-        #region SA_Link    
-        SouthAmerica.countries[new Country("Brazil", 2)].Add(Africa.countries.FindNode(new Country("North Africa", 5))); // Link to Africa
-        SouthAmerica.countries[new Country("Venezuela", 3)].Add(NorthAmerica.countries.FindNode(new Country("Central America", 3))); // Link to North America
-        #endregion
 
         #region EU_Link
-        Europe.countries[new Country("Southern Europe", 5)].Add(Asia.countries.FindNode(new Country("Middle East", 7))); // Link to Asia
-        Europe.countries[new Country("Ukraine", 6)].Add(Asia.countries.FindNode(new Country("Afghanistan", 1))); // Link to Asia
-        Europe.countries[new Country("Ukraine", 6)].Add(Asia.countries.FindNode(new Country("Middle East", 7))); // Link to Asia
-        Europe.countries[new Country("Ukraine", 6)].Add(Asia.countries.FindNode(new Country("Ural", 11))); // Link to Asia
+        Europe.countries["Southern Europe"].Add(Asia.countries.FindNode("Middle East")); // Link to Southern Europe to Middle East (Asia)
+        Europe.countries["Ukraine"].Add(Asia.countries.FindNode("Afghanistan")); // Link to Ukraine to Afghanistan (Asia)
+        Europe.countries["Ukraine"].Add(Asia.countries.FindNode("Middle East")); // Link to Ukraine to Middle East (Asia)
+        Europe.countries["Ukraine"].Add(Asia.countries.FindNode("Ural")); // Link to Ukraine to Ural (Asia)
 
-        Europe.countries[new Country("Iceland", 2)].Add(NorthAmerica.countries.FindNode(new Country("Greenland", 5))); // Link to North America
+        Europe.countries["Iceland"].Add(NorthAmerica.countries.FindNode("Greenland")); // Link to Iceland to Greenland (North America)
 
-        Europe.countries[new Country("Southern Europe", 5)].Add(Africa.countries.FindNode(new Country("Egypt", 3))); // Link to Africa
-        //Europe.countries[new Country("Southern Europe", 5)].Add(Africa.countries.FindNode(new Country("North Africa", 5))); // Link to Africa
-        Europe.countries[new Country("Western Europe", 7)].Add(Africa.countries.FindNode(new Country("North Africa", 5))); // Link to Africa
+        Europe.countries["Southern Europe"].Add(Africa.countries.FindNode("Egypt")); // Link to Southern Europe to Egypt (Africa)
+        Europe.countries["Southern Europe"].Add(Africa.countries.FindNode("North Africa")); // Link to Southern Europe to Norht Africa (Africa)
+        Europe.countries["Western Europe"].Add(Africa.countries.FindNode("North Africa")); // Link to Westeren Europe to North Africa (Africa)
         #endregion
+
 
         #region AF_Link
-        Africa.countries[new Country("North Africa", 5)].Add(SouthAmerica.countries.FindNode(new Country("Brazil", 2))); //Link to South America
+        Africa.countries["North Africa"].Add(SouthAmerica.countries.FindNode("Brazil")); //Link to North Africa to Brazil (South America)
 
-        Africa.countries[new Country("Egypt", 3)].Add(Europe.countries.FindNode(new Country("Southern Europe", 5))); //Link to Europe
-        //Africa.countries[new Country("North Africa", 5)].Add(Europe.countries.FindNode(new Country("Southern Europe", 5))); //Link to Europe
-        Africa.countries[new Country("North Africa", 5)].Add(Europe.countries.FindNode(new Country("Western Europe", 7))); //Link to Europe
+        Africa.countries["Egypt"].Add(Europe.countries.FindNode("Southern Europe")); //Link to Egypt to Southern Europe (Europe)
+        Africa.countries["North Africa"].Add(Europe.countries.FindNode("Southern Europe")); //Link to North Africa to Southern Europe (Europe)
+        Africa.countries["North Africa"].Add(Europe.countries.FindNode("Western Europe")); //Link to North Africa to Westeren Europe (Europe)
 
-        Africa.countries[new Country("Egypt", 3)].Add(Asia.countries.FindNode(new Country("Middle East", 7))); // Link to Asia
-        Africa.countries[new Country("East Africa", 2)].Add(Asia.countries.FindNode(new Country("Middle East", 7))); // Link to Asia
+        Africa.countries["Egypt"].Add(Asia.countries.FindNode("Middle East")); // Link to Egypt to Middle East (Asia)
+        Africa.countries["East Africa"].Add(Asia.countries.FindNode("Middle East")); // Link to East Africa to Middle East (Asia)
         #endregion
+
 
         #region AS_Link
-        Asia.countries[new Country("Afghanistan", 1)].Add(Europe.countries.FindNode(new Country("Ukraine", 6))); // Link to Europe
-        Asia.countries[new Country("Ural", 11)].Add(Europe.countries.FindNode(new Country("Ukraine", 6))); // Link to Europe
-        Asia.countries[new Country("Middle East", 7)].Add(Europe.countries.FindNode(new Country("Ukraine", 6))); // Link to Europe
-        Asia.countries[new Country("Middle East", 7)].Add(Europe.countries.FindNode(new Country("Southern Europe", 5))); // Linke to Europe
+        Asia.countries["Afghanistan"].Add(Europe.countries.FindNode("Ukraine")); // Link to Afghanistan to Ukraine (Europe)
+        Asia.countries["Ural"].Add(Europe.countries.FindNode("Ukraine")); // Link to Ural to Ukraine (Europe)
+        Asia.countries["Middle East"].Add(Europe.countries.FindNode("Ukraine")); // Link to Middle East to Ukreaine (Europe)
+        Asia.countries["Middle East"].Add(Europe.countries.FindNode("Southern Europe")); // Link to Middle East to Southern Europe (Europe)
 
-        Asia.countries[new Country("Middle East", 7)].Add(Africa.countries.FindNode(new Country("Egypt", 3))); // Link to Africa
-        Asia.countries[new Country("Middle East", 7)].Add(Africa.countries.FindNode(new Country("East Africa", 2))); // Link to Africa
+        Asia.countries["Middle East"].Add(Africa.countries.FindNode("Egypt")); // Link to Middle East to Egypt (Africa)
+        Asia.countries["Middle East"].Add(Africa.countries.FindNode("East Africa")); // Link to Middle East to East Africa (Africa)
 
-        Asia.countries[new Country("Siam", 9)].Add(Austrialia.countries.FindNode(new Country("Indoneisa", 3))); // Link to Australia
+        Asia.countries["Siam"].Add(Austrialia.countries.FindNode("Indoneisa")); // Link to Siam to Indonesia (Australia)
 
-        Asia.countries[new Country("Kamchatka", 6)].Add(NorthAmerica.countries.FindNode(new Country("Alaska", 1))); // Link to North America
+        Asia.countries["Kamchatka"].Add(NorthAmerica.countries.FindNode("Alaska")); // Link to Kamchatka to Alaska (North America)
         #endregion
+
 
         #region AU_Link
-        Austrialia.countries[new Country("Indoneisa", 3)].Add(Asia.countries.FindNode(new Country("Siam", 9))); // Link to Asia
+        Austrialia.countries["Indoneisa"].Add(Asia.countries.FindNode("Siam")); // Link to Indoneisia to Siam (Asia)
         #endregion
+
 
         // Link Continents to create map
         map.Add(NorthAmerica, new List<Continent> { SouthAmerica, Europe, Asia });
@@ -242,4 +255,24 @@ public static class Map
         map.Add(Asia, new List<Continent> { NorthAmerica, Europe, Africa, Austrialia });
         map.Add(Austrialia, new List<Continent> { Asia });
 	}
+    #endregion
+
+    public static List<Country> AllCountries 
+    {
+        get 
+        {
+            List<Country> result = new List<Country>();
+
+            foreach (Continent continent in map)
+            {
+                foreach (Country country in continent.countries)
+                {
+                    if (result.Contains(country) == false)
+                        result.Add(country);
+                }
+            }
+
+            return result;
+        }
+    }
 }

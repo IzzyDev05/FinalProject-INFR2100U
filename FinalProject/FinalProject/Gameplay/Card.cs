@@ -33,9 +33,7 @@ public class Card
                 }
         }
 
-        List<Country> countries = new List<Country>();
-
-        country = countries[random.Next(0, countries.Count-1)];
+        country = Map.AllCountries[random.Next(0, Map.AllCountries.Count)];
     }
 }
 
