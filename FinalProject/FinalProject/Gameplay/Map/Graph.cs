@@ -70,7 +70,14 @@ public class Graph<T>
     /// <returns></returns>
     public List<T> GetNeighbors(T Node)
     {
-        return adjacencyList[Node];
+        try
+        {
+            return adjacencyList[Node];
+        }
+        catch (Exception e) 
+        {
+            return new List<T>();
+        }
     }
 
     #endregion
@@ -104,13 +111,20 @@ public class Graph<T>
                 return adjacencyList[node];
             }
 
-            throw new KeyNotFoundException();
+            return new List<T>();
+            //throw new KeyNotFoundException();
 
         }
 
         set
         {
-            adjacencyList[node] = value;
+            
+            if (adjacencyList.ContainsKey(node))
+            {
+                adjacencyList[node] = value;
+            }
+
+            throw new KeyNotFoundException();
         }
     }
 
@@ -132,7 +146,8 @@ public class Graph<T>
                 }
             }
 
-            throw new KeyNotFoundException();
+            return new List<T>();
+            //throw new KeyNotFoundException();
         }
 
         set 

@@ -20,7 +20,7 @@ public class Player
     private bool cardTradeBonus = false;
     private bool successfulConquer = false;
     private int armyUsed = 0;
-    private int reienforcmentOwned = 0;
+    private int reinforcmentOwned = 0;
     private GamePhase currentPhase;
     #endregion
 
@@ -31,7 +31,7 @@ public class Player
         setTraded = 0;
         cardTradeBonus = false;
         currentPhase = GamePhase.End;
-        reienforcmentOwned = 0;
+        reinforcmentOwned = 0;
 
         // Clear list
         controlledTerritory.Clear();
@@ -40,7 +40,7 @@ public class Player
         // Set player values
         turnOrder = turn;
         playerColour = colour;
-        reienforcmentOwned = startingArmies;
+        reinforcmentOwned = startingArmies;
     }
 
 
@@ -90,15 +90,17 @@ public class Player
 
     public void PlayerTurn()
     {
+        
+
         if (armyUsed == 0)
         {
-            int population = (int)Math.Ceiling((double)reienforcmentOwned / controlledTerritory.Count);
+            int population = (int)Math.Ceiling((double)reinforcmentOwned / controlledTerritory.Count);
 
             foreach(Country owned in controlledTerritory)
             {
-                owned.population = population;
+                owned.Population = population;
                 armyUsed += population;
-                reienforcmentOwned -= (reienforcmentOwned - population) >= 0 ? population : reienforcmentOwned;
+                reinforcmentOwned -= (reinforcmentOwned - population) >= 0 ? population : reinforcmentOwned;
             }
         }
 
@@ -115,8 +117,12 @@ public class Player
     /// </summary>
     private void Reinforcement()
     {
+        Console.WriteLine("\nReinforcement Phase");
+        Console.WriteLine("-------------------");
+
         currentPhase = GamePhase.Reinforcement;
 
+        #region Gain_Army
         int gainedArmy = Convert.ToInt32(MathF.Floor(controlledTerritory.Count / 3));
 
         // Get bonus for owning a continent
@@ -137,12 +143,92 @@ public class Player
         // Give a minimum of 3 armies
         if (gainedArmy < 3)
         {
-            reienforcmentOwned += 3;
+            reinforcmentOwned += 3;
         }
         else
         {
-            reienforcmentOwned += gainedArmy;
+            reinforcmentOwned += gainedArmy;
         }
+    #endregion
+
+
+    PLACE_ARMY:
+        Console.WriteLine($"You have {reinforcmentOwned} armies to use.\n");
+        Console.Write("Choose the name of a territory you wish to reinforce - ");
+
+        string displayOwnedTerritory = "";
+
+        foreach(Country owned in controlledTerritory)
+        {
+            if( owned != controlledTerritory.First())
+            {
+                displayOwnedTerritory += ", ";
+            }
+
+            displayOwnedTerritory += $"{owned.countryName} - [{owned.Population}]";
+        }
+        displayOwnedTerritory += ": ";
+        Console.Write(displayOwnedTerritory);
+
+
+        #region Find_Owned_Territory
+        string reinforceTerritory = "";
+        bool validOption = false;
+        Country reinforce = null;
+        while (validOption == false)
+        {
+            reinforceTerritory = Console.ReadLine();
+
+            foreach(Country owned in controlledTerritory)
+            {
+                if (owned.countryName.ToLower() == reinforceTerritory.ToLower())
+                {
+                    validOption = true;
+                    reinforce = owned;
+                }
+            }
+
+            if (validOption == false)
+            {
+                Console.Write("Please choose a valid option: ");
+            }
+        }
+        #endregion
+
+
+        #region Add_Reinforcements
+        Console.Write("\nHow many armies do you want to add? ");
+        int reinforcementUsed = Convert.ToInt32(Console.ReadLine());
+
+        while (reinforcementUsed > reinforcmentOwned && reinforcmentOwned < 0)
+        {
+            Console.Write($"{reinforcementUsed} is not a valid option. Please choose positive number that is less than {reinforcmentOwned}");
+            reinforcementUsed = Convert.ToInt32(Console.ReadLine());
+        }
+
+        reinforce.Population += reinforcementUsed;
+        reinforcmentOwned -= reinforcementUsed;
+        armyUsed += reinforcementUsed;
+
+        if (reinforcmentOwned == 0)
+        {
+            Console.WriteLine("No more reinforcements to place. Reinforcement Phase automatically ends.");
+            return;
+        }
+
+        Console.Write($"You have {reinforcmentOwned} armies to use. Do you want to reinforce another territory? (Y/N): ");
+        string again = "";
+
+        while (again.ToUpper() != "Y" && again.ToUpper() != "N")
+        {
+            again = Console.ReadLine();
+        }
+
+        if (again == "Y")
+        {
+            goto PLACE_ARMY;
+        }
+        #endregion
     }
 
     /// <summary>
@@ -150,6 +236,8 @@ public class Player
     /// </summary>
     private void Attack()
     {
+        Console.WriteLine("\nAttack Phase");
+        Console.WriteLine("------------");
     ATTACK_AGAIN:
 
         #region Player_Attack?
@@ -158,7 +246,7 @@ public class Player
 
         while (attackAgain.ToUpper() != "Y" && attackAgain.ToUpper() != "N")
         {
-            Console.WriteLine("Do you want to attack? (Y/N): ");
+            Console.Write($"Do you want to attack? (Y/N): ");
             attackAgain = Console.ReadLine();
         }
 
@@ -172,7 +260,7 @@ public class Player
         currentPhase = GamePhase.Attack;
 
         #region Choose_Attack_Point
-        Console.WriteLine("Choose territory you want to attack from.");
+        Console.Write("\nChoose territory you want to attack from - ");
         Country attackingTerritory = null;
 
         string owned = "";
@@ -184,19 +272,20 @@ public class Player
                 owned += ", ";
             }
 
-            if(ownedCountry.population > 1)
+            if(ownedCountry.Population > 1)
             {
                 owned += $"{ownedCountry.countryName}";
                 validAttackers.Add(ownedCountry);
             }
         }
-        Console.WriteLine(owned);
+        owned += ": ";
+        Console.Write(owned);
 
 
         string attackingName = Console.ReadLine();
         foreach(Country attackOrigin in validAttackers)
         {
-            if (attackOrigin.countryName == attackingName)
+            if (attackOrigin.countryName.ToLower() == attackingName.ToLower())
             {
                 attackingTerritory = attackOrigin;
                 break;
@@ -205,8 +294,6 @@ public class Player
         #endregion
 
         #region Choose_Enemy_Territory
-        Console.WriteLine("Choose a territory to attack: ");
-
         List<Country> enemyCountryList = new List<Country>();
         string enemyCountries = "";
         foreach (Continent continent in Map.map)
@@ -215,27 +302,36 @@ public class Player
             {
                 foreach (Country enemy in continent.countries.GetNeighbors(attackingTerritory))
                 {
-                    if (enemy.owner.playerColour != playerColour)
+                    if (continent.countries.GetNeighbors(attackingTerritory).Count == 0)
                     {
-                        if (enemy != continent.countries.GetNeighbors(attackingTerritory).First())
+                        break;
+                    }
+
+                    if (enemy.owner != this)
+                    {
+                        if (enemyCountries != "")
                         {
                             enemyCountries += ", ";
                         }
 
-                        enemyCountries += $"{enemy.countryName}";
+                        enemyCountries += $"{enemy.countryName} - [{enemy.owner.playerColour}]";
                         enemyCountryList.Add(enemy);
                     }
                 }
+                if (enemyCountryList.Count > 0)
+                {
+                    break;
+                }
             }
         }
-        Console.WriteLine($"Adjacent Countries to {attackingTerritory.countryName}: {enemyCountries} \n");
+        Console.WriteLine($"\nAdjacent Countries to {attackingTerritory.countryName}: {enemyCountries}");
 
-
+        Console.Write("\nChoose a territory to attack: ");
         string enemyTerritory = Console.ReadLine();
         Country defendingTerritory = null;
         foreach(Country enemyCountry in enemyCountryList)
         {
-            if (enemyCountry.countryName == enemyTerritory)
+            if (enemyCountry.countryName.ToLower() == enemyTerritory.ToLower())
             {
                 defendingTerritory = enemyCountry;
             }
@@ -245,33 +341,40 @@ public class Player
         #region Attack
         int diceCount = 0;
 
-        while (diceCount < 1 || diceCount > 3 && diceCount < attackingTerritory.population)
+        while (diceCount < 1 || diceCount > 3 && diceCount < attackingTerritory.Population)
         {
-            Console.WriteLine("Choose the number of dice to roll (1-3). You must have 1 more army than dice rolled: ");
-            diceCount = Console.Read();
+            Console.Write("Choose the number of dice to roll (1-3). You must have 1 more army than dice rolled: ");
+            diceCount = Convert.ToInt32(Console.ReadLine());
         }
 
-        if (GetHighestRoll(diceCount) > defendingTerritory.owner.Defend(defendingTerritory))
+        int attackResult = GetHighestRoll(diceCount);
+        int defendResult = defendingTerritory.owner.Defend(defendingTerritory);
+        Console.Write($"{playerColour} rolled {attackResult}, while {defendingTerritory.owner.playerColour} rolled {defendResult}.");
+        if (attackResult > defendResult)
         {
-            defendingTerritory.population--;
+            Console.WriteLine($"{playerColour} defeated. {defendingTerritory.owner.playerColour}.");
+            defendingTerritory.Population--;
         }
         else
         {
-            attackingTerritory.population--;
+            Console.WriteLine($"{defendingTerritory.owner.playerColour} defeated. {playerColour}.");
+            attackingTerritory.Population--;
         }
 
-        if (defendingTerritory.population <= 0)
+        if (defendingTerritory.Population <= 0)
         {
             defendingTerritory.owner.LostTerritory(defendingTerritory);
 
             defendingTerritory.owner = this;
             controlledTerritory.Add(defendingTerritory);
 
-            defendingTerritory.population = diceCount;
+            defendingTerritory.Population = diceCount;
 
-            attackingTerritory.population -= diceCount;
+            attackingTerritory.Population -= diceCount;
 
             successfulConquer = true;
+
+            Console.WriteLine($"{playerColour} conquered {defendingTerritory.countryName}.");
         }
 
         #endregion
@@ -286,12 +389,14 @@ public class Player
     /// <returns>The highest roll needed for the attack phase.</returns>
     public int Defend(Country defending)
     {
+        Console.WriteLine($"Player {playerColour}. Roll to defend.");
+
         int defendRoll = 0;
 
-        while (defendRoll <  0 || defendRoll > 2 && defending.population >= defendRoll)
+        while (defendRoll <  0 && defendRoll > 2 || defending.Population >= defendRoll)
         {
-            Console.WriteLine("Choose the number of dice to roll (1-2). Number of dice cannot exceed the number of armies you have: ");
-            defendRoll = Console.Read();
+            Console.Write($"Choose the number of dice to roll (1-2). Number of dice cannot exceed the number of armies you have ({defending.Population}): ");
+            defendRoll = Convert.ToInt32(Console.ReadLine());
         }
 
         return GetHighestRoll(defendRoll);
@@ -302,7 +407,114 @@ public class Player
     /// </summary>
     private void Fortification()
     {
+        Console.WriteLine("\nFortification Phase");
+        Console.WriteLine("-------------------");
+        #region Player_Fortify?
+        string fortify = "";
+
+        while (fortify.ToUpper() != "Y" && fortify.ToUpper() != "N")
+        {
+            Console.WriteLine("Do you want to attack? (Y/N): ");
+            fortify = Console.ReadLine();
+        }
+
+        if (fortify.ToUpper() == "N")
+        {
+            return;
+        }
+        #endregion
+
         currentPhase = GamePhase.Fortification;
+
+        #region Choose_Start
+        Console.WriteLine("Choose the name of a territory you wish to move armies from: ");
+        string displayOwnedTerritory = "";
+
+        foreach (Country owned in controlledTerritory)
+        {
+            if (owned != controlledTerritory.First())
+            {
+                displayOwnedTerritory += ", ";
+            }
+
+            displayOwnedTerritory += $"{owned.countryName} - [{owned.Population}]";
+        }
+        Console.WriteLine(displayOwnedTerritory);
+
+        string startTerritory = "";
+        Country start = null;
+        bool validOption = false;
+        while (validOption == false)
+        {
+            startTerritory = Console.ReadLine();
+
+            foreach (Country owned in controlledTerritory)
+            {
+                if (owned.countryName.ToLower() == startTerritory.ToLower())
+                {
+                    validOption = true;
+                    start = owned;
+                }
+            }
+        }
+        #endregion
+
+
+        #region Choose_Forify
+        Console.WriteLine("Choose a territory you want to fortify: ");
+        string adjacentOwned = "";
+        List<Country> fortifiable = new List<Country>();
+
+        foreach(Continent continent in Map.map)
+        {
+            foreach (Country country in continent.countries)
+            {
+                if (country.countryName.ToLower() == startTerritory.ToLower() && country.owner == this)
+                {
+                    foreach(Country adjacent in continent.countries.GetNeighbors(country))
+                    {
+                        if (adjacent != continent.countries.GetNeighbors(country).First())
+                        {
+                            adjacentOwned += ", ";
+                        }
+
+                        adjacentOwned += $"{adjacent.countryName} - [{adjacent.Population}]";
+                        fortifiable.Add(adjacent);
+                    }
+                }
+            }
+        }
+        Console.WriteLine(adjacentOwned);
+
+        string forifyTerritory = "";
+        Country choice = null;
+
+        do 
+        {
+            forifyTerritory = Console.ReadLine();
+
+            foreach (Country option in fortifiable)
+            {
+                if (option.countryName.ToLower() == forifyTerritory.ToLower())
+                {
+                    choice = option;
+                }
+            }
+
+        } while (choice == null);
+        #endregion
+
+        #region Fortify
+        int moveAmount = -1;
+        while (moveAmount < 0 && moveAmount >= start.Population)
+        {
+            Console.WriteLine("Choose how many armies you wish to move (a miminum of 1 army must stay behind): ");
+            moveAmount = Convert.ToInt32(Console.ReadLine());
+        }
+
+        choice.Population += moveAmount;
+        start.Population -= moveAmount;
+        #endregion
     }
 
     /// <summary>
@@ -316,6 +528,8 @@ public class Player
             DrawCard();
 
         successfulConquer = false;
+
+        Console.WriteLine($"Player {playerColour}'s turn ends.");
     }
 
     /// <summary>
@@ -329,7 +543,7 @@ public class Player
 
         if (cards.Count >= 5)
         {
-            reienforcmentOwned += TradeSet();
+            reinforcmentOwned += TradeSet();
         }
     }
     #endregion

@@ -7,7 +7,7 @@ public class Country
 {
     public string countryName { get; private set; }
     public Player owner;
-    public int population;
+    private int population;
     public int position;
 
     public Country(string newName, int newPos)
