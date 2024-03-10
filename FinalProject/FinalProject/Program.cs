@@ -9,8 +9,9 @@ class Program
     {
         bool gameOver = false; 
 
-        Map.MakeMapGraph();
+        Map.MakeMapGraph(); // Generate map in code
 
+        #region Player_Join
         int playerCount = 0;
         do
         {
@@ -48,10 +49,17 @@ class Program
             }
         }
 
+        // Populate the newly controlled territory before the games starts.
+        foreach(Player player in players)
+        {
+            player.SetupPlayerTerritory();
+        }
+        #endregion
+
         using Game risk = new Game(1200, 614, "Risk - INFR2100U");
         risk.Run();
 
-        // Game
+        #region Gameplay
         while (gameOver == false)
         {
             if (players.Count == 1)
@@ -76,6 +84,8 @@ class Program
                 }
             }
         }
+        #endregion
+
 
         /*#region DISPLAY_MAP
         Console.WriteLine("Map:");

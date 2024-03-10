@@ -90,20 +90,6 @@ public class Player
 
     public void PlayerTurn()
     {
-        
-
-        if (armyUsed == 0)
-        {
-            int population = (int)Math.Ceiling((double)reinforcmentOwned / controlledTerritory.Count);
-
-            foreach(Country owned in controlledTerritory)
-            {
-                owned.Population = population;
-                armyUsed += population;
-                reinforcmentOwned -= (reinforcmentOwned - population) >= 0 ? population : reinforcmentOwned;
-            }
-        }
-
         Reinforcement();
         Attack();
         Fortification();
@@ -147,6 +133,7 @@ public class Player
         }
         else
         {
+            Console.WriteLine($"You gained {gainedArmy} at the start of your turn.\n");
             reinforcmentOwned += gainedArmy;
         }
     #endregion
@@ -550,6 +537,22 @@ public class Player
 
 
     #region HELPERS
+    public void SetupPlayerTerritory()
+    {
+        if (armyUsed == 0)
+        {
+            int population = (int)Math.Ceiling((double)reinforcmentOwned / controlledTerritory.Count);
+
+            foreach (Country owned in controlledTerritory)
+            {
+                owned.Population = population;
+                armyUsed += population;
+                reinforcmentOwned -= (reinforcmentOwned - population) >= 0 ? population : reinforcmentOwned;
+            }
+        }
+    }
+
+
     /// <summary>
     /// Grants bonus armies depending on the number of sets given.
     /// </summary>
@@ -608,7 +611,6 @@ public class Player
         return set;
     }
 
-
     private int GetHighestRoll(int diceCount)
     {
         int highest = 0;
@@ -637,6 +639,8 @@ public class Player
             isElimiated = true;
         }
     }
+
+
     #endregion
 }
 
