@@ -140,7 +140,8 @@ public class Graph<T>
         {
             foreach (T node in adjacencyList.Keys)
             {
-                if (node is Country country && country.countryName == name || node is Continent continent && continent.continentName == name)
+                if (node is Country country && country.countryName.ToLower() == name.ToLower() || 
+                    node is Continent continent && continent.continentName.ToLower() == name.ToLower())
                 {
                     return adjacencyList[node];
                 }
@@ -154,7 +155,8 @@ public class Graph<T>
         {
             foreach (T node in adjacencyList.Keys)
             {
-                if (node is Country country && country.countryName == name || node is Continent continent && continent.continentName == name)
+                if (node is Country country && country.countryName.ToLower() == name.ToLower() || 
+                    node is Continent continent && continent.continentName.ToLower() == name.ToLower())
                 {
                     adjacencyList[node] = value;
                 }
@@ -169,11 +171,18 @@ public class Graph<T>
     /// </summary>
     public T FirstNode { get { return adjacencyList.First().Key; } }
 
+    /// <summary>
+    /// Finds the first node that is a Country or Continent.
+    /// </summary>
+    /// <param name="name">Name of the Country or Continent</param>
+    /// <returns></returns>
+    /// <exception cref="KeyNotFoundException"></exception>
     public T FindNode(string name)
     {
         foreach(T node in adjacencyList.Keys)
         {
-            if (node is Country country && country.countryName == name || node is Continent continent && continent.continentName == name)
+            if (node is Country country && country.countryName.ToLower() == name.ToLower() || 
+                node is Continent continent && continent.continentName.ToLower() == name.ToLower())
             {
                 return node;
             }
@@ -182,13 +191,46 @@ public class Graph<T>
         throw new KeyNotFoundException();
     }
 
-    public Dictionary<T, List<T>>.KeyCollection GetAllKeys { get { return adjacencyList.Keys; } }
-    public Dictionary<T, List<T>>.ValueCollection GetAllValues { get { return adjacencyList.Values; } }
+    /// <summary>
+    /// Return true if the node is found.
+    /// </summary>
+    /// <param name="node">The node of type T which you want to find.</param>
+    /// <returns></returns>
+    public bool Contains(T node)
+    {
+        if (adjacencyList.ContainsKey(node))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Returns true if the Country or Continent is found.
+    /// </summary>
+    /// <param name="name">The name of the Country or Continent</param>
+    /// <returns></returns>
+    public bool Contains(string name)
+    {
+        foreach(T node in adjacencyList.Keys)
+        {
+            if (node is Country country && country.countryName.ToLower() == name.ToLower() || 
+                node is Continent continent && continent.continentName.ToLower() == name.ToLower())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     #endregion
 
-
-    #region TEST_&_DELETE
     // EXISTS ONLY TO CHECK OUT WHAT NEW FUNCTIONS NEEDS TO BE ADDED.
+    #region TEST_&_DELETE
+    /// <summary>
+    /// ONLY FOR TESTING PURPOSES
+    /// </summary>
     private void Test()
     {
         
